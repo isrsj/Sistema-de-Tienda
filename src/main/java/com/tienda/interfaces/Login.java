@@ -6,17 +6,12 @@ import com.tienda.session.Session;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.NoResultException;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Israel Reyes
- */
 public class Login {
     
     private final int WIDTH = 150;
@@ -45,8 +40,8 @@ public class Login {
         login.setBounds(20, 100, WIDTH, HEIGHT);
         createAccount.setBounds(20, 140, WIDTH, HEIGHT);
         
-        login.addMouseListener( listenerLogin() );
-        createAccount.addMouseListener( listenerCreateAccount() );
+        login.addActionListener( listenerLogin() );
+        createAccount.addActionListener( listenerCreateAccount() );
         
         panel.add(nickname);
         panel.add(password);
@@ -54,26 +49,22 @@ public class Login {
         panel.add(createAccount);
     }
     
-    private MouseAdapter listenerCreateAccount () {
-        return new MouseAdapter() {
-            @Override
-            public void mouseClicked (MouseEvent e) {
-                panel.removeAll();
-                panel.repaint();
-            }
+    private ActionListener listenerCreateAccount () {
+        return action -> {
+            panel.removeAll();
+            panel.revalidate();
+            panel.repaint();
+            new SignIn(panel, factory).initPanelSignin();
         };        
     }
     
-    private MouseAdapter listenerLogin () {
-        return new MouseAdapter() {
-            @Override
-            public void mouseClicked (MouseEvent e) {
-                String nick = nickname.getText();
-                String pass = password.getText();
-                
-                if ( !nick.equals("") && !pass.equals("") ) {
-                    managerLogin( nick, pass );
-                }
+    private ActionListener listenerLogin () {
+        return action -> {
+            String nick = nickname.getText();
+            String pass = password.getText();
+
+            if ( !nick.equals("") && !pass.equals("") ) {
+                managerLogin( nick, pass );
             }
         };
     }
@@ -87,15 +78,16 @@ public class Login {
     }
     
     private void validateAccount (EntityManager entityManager, String nick, String pass) {
-        String query = "where nickname=:paramNick";
-        
+        String hql = "where nickname=:paramNick";
         try {
-            Cuenta cuenta = entityManager.createQuery(query, Cuenta.class)
+            Cuenta cuenta = entityManager.createQuery(hql, Cuenta.class)
                 .setParameter("paramNick", nick)
                 .getSingleResult();
             
             if ( cuenta.getPassword().equals(pass) ) {
                 panel.removeAll();
+                panel.revalidate();
+                // mover a la interfaz de admin
                 panel.repaint();
             } else {
                 showMessage("The password is incorrect");

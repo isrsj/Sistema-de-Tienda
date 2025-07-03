@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * @author Israel Reyes
+ * @author Israel Reyes (Apelapato)
  */
 public class TiendaAbarrotes extends JFrame {
 
