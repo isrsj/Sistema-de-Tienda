@@ -9,14 +9,14 @@ import jakarta.persistence.NoResultException;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelLogin extends JPanel implements KeyListener, MouseListener {
+public class PanelLogin extends JPanel implements KeyListener {
     
     private final int WIDTH = 150;
     private final int HEIGHT = 30;
@@ -44,12 +44,22 @@ public class PanelLogin extends JPanel implements KeyListener, MouseListener {
         
         nickname.addKeyListener(this);
         password.addKeyListener(this);
-        createAccount.addMouseListener(this);
+        createAccount.addMouseListener( listenerCreateAccount() );
         
         add(nickname);
         add(password);
         add(createAccount);
         
+    }
+    
+    private MouseAdapter listenerCreateAccount () {
+        return new MouseAdapter() {
+            @Override
+            public void mouseClicked (MouseEvent e) {
+                removeAll();
+                repaint();
+            }
+        };        
     }
 
     @Override
@@ -100,22 +110,5 @@ public class PanelLogin extends JPanel implements KeyListener, MouseListener {
     
     @Override
     public void keyReleased(KeyEvent e) {}
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println("You are creatting an account");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {}
-
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-
-    @Override
-    public void mouseExited(MouseEvent e) {}
     
 }
