@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelLogin extends JPanel implements KeyListener {
+public class PanelLogin extends JPanel {
     
     private final int WIDTH = 150;
     private final int HEIGHT = 30;
     
     private EntityManagerFactory factory;
     private JTextField nickname, password;
-    private JButton createAccount;
+    private JButton createAccount, login;
     
     public PanelLogin ( EntityManagerFactory factory ) {
         this.factory = factory;
@@ -31,25 +31,28 @@ public class PanelLogin extends JPanel implements KeyListener {
         setLayout(null);
         setBackground(Color.DARK_GRAY);
         
+        initPanelLogin();
+        
+    }
+    
+    private void initPanelLogin() {
         nickname = new JTextField(30);
         password = new JTextField(30);
+        login =  new JButton("Login");
         createAccount = new JButton ("Create an Account");
         
         nickname.setBounds(20, 20, WIDTH, HEIGHT);
         password.setBounds(20, 60, WIDTH, HEIGHT);
-        createAccount.setBounds(20, 100, WIDTH, HEIGHT);
+        login.setBounds(20, 100, WIDTH, HEIGHT);
+        createAccount.setBounds(20, 140, WIDTH, HEIGHT);
         
-        nickname.setFocusable(true);
-        password.setFocusable(true);
-        
-        nickname.addKeyListener(this);
-        password.addKeyListener(this);
+        login.addMouseListener( listenerLogin() );
         createAccount.addMouseListener( listenerCreateAccount() );
         
         add(nickname);
         add(password);
+        add(login);
         add(createAccount);
-        
     }
     
     private MouseAdapter listenerCreateAccount () {
@@ -61,24 +64,22 @@ public class PanelLogin extends JPanel implements KeyListener {
             }
         };        
     }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        
-        if ( e.getKeyCode() == KeyEvent.VK_ENTER) {
-            String nick = nickname.getText();
-            String pass = password.getText();
-            
-            if ( !nick.equals("") && !pass.equals("") ) {
+    
+    public MouseAdapter listenerLogin () {
+        return new MouseAdapter() {
+            @Override
+            public void mouseClicked (MouseEvent e) {
+                String nick = nickname.getText();
+                String pass = password.getText();
                 
-                login( nick, pass );
-                
+                if ( !nick.equals("") && !pass.equals("") ) {
+                    managerLogin( nick, pass );
+                }
             }
-        }
-        
+        };
     }
     
-    private void login ( String nick, String pass ) {
+    private void managerLogin ( String nick, String pass ) {
         Session.inSession(factory, entityManager -> {
 
             validateAccount(entityManager, nick, pass);
@@ -95,7 +96,8 @@ public class PanelLogin extends JPanel implements KeyListener {
                 .getSingleResult();
             
             if ( cuenta.getPassword().equals(pass) ) {
-                // llevar a otra interfaz
+                removeAll();
+                repaint();
             } else {
                 JOptionPane.showMessageDialog(null, "The password is incorrect");
             }
@@ -104,11 +106,5 @@ public class PanelLogin extends JPanel implements KeyListener {
             JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado en el sistema");
         }
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {}
-    
-    @Override
-    public void keyReleased(KeyEvent e) {}
     
 }
