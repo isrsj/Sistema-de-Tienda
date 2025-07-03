@@ -1,5 +1,5 @@
 
-package com.mycompany.tiendaabarrotes;
+package com.tienda.main;
 
 import com.tienda.interfaces.PanelLogin;
 import com.tienda.session.Session;
