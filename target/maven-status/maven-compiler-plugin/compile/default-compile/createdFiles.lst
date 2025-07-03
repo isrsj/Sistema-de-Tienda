@@ -1,7 +1,5 @@
-com\tienda\interfaces\Login$1.class
-com\tienda\interfaces\Login.class
 com\tienda\entities\Cuenta.class
-com\tienda\interfaces\Login$2.class
 com\tienda\interfaces\PanelLogin.class
 com\tienda\main\TiendaAbarrotes.class
+com\tienda\interfaces\Login.class
 com\tienda\session\Session.class
