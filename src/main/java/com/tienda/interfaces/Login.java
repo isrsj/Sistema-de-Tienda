@@ -54,7 +54,7 @@ public class Login {
             panel.removeAll();
             panel.revalidate();
             panel.repaint();
-            new SignIn(panel, factory).initPanelSignin();
+            //new SignIn(panel, factory).initPanelSignin();
         };        
     }
     
