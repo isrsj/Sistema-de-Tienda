@@ -1,7 +1,7 @@
 
 package com.tienda.interfaces;
 
-import com.tienda.entities.Cuenta;
+import com.tienda.entities.Account;
 import com.tienda.session.Session;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -80,7 +80,7 @@ public class Login {
     private void validateAccount (EntityManager entityManager, String nick, String pass) {
         String hql = "where nickname=:paramNick";
         try {
-            Cuenta cuenta = entityManager.createQuery(hql, Cuenta.class)
+            Account cuenta = entityManager.createQuery(hql, Account.class)
                 .setParameter("paramNick", nick)
                 .getSingleResult();
             
