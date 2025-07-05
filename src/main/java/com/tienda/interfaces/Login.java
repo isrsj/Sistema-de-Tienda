@@ -53,8 +53,8 @@ public class Login {
         return action -> {
             panel.removeAll();
             panel.revalidate();
+            new SignIn(panel, factory).initSignIn();
             panel.repaint();
-            //new SignIn(panel, factory).initPanelSignin();
         };        
     }
     
@@ -80,11 +80,11 @@ public class Login {
     private void validateAccount (EntityManager entityManager, String nick, String pass) {
         String hql = "where nickname=:paramNick";
         try {
-            Account cuenta = entityManager.createQuery(hql, Account.class)
+            Account account = entityManager.createQuery(hql, Account.class)
                 .setParameter("paramNick", nick)
                 .getSingleResult();
             
-            if ( cuenta.getPassword().equals(pass) ) {
+            if ( account.getPassword().equals(pass) ) {
                 panel.removeAll();
                 panel.revalidate();
                 // mover a la interfaz de admin

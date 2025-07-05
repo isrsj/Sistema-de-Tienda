@@ -6,7 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
 
 @Entity
 @Table( name="AccountRole" )
@@ -20,10 +22,26 @@ public class AccountRole {
     @Column( name="role_name", nullable=false, unique=true )
     private String name;
     
+    @OneToMany( mappedBy="role" )
+    private Set<Account> account;
+    
     public AccountRole () {}
 
     public AccountRole(String name) {
         this.name = name;
+    }
+
+    public AccountRole(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Set<Account> getAccount() {
+        return account;
+    }
+
+    public void setAccount(Set<Account> account) {
+        this.account = account;
     }
 
     public Integer getId() {

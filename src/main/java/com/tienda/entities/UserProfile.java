@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -30,26 +31,34 @@ public class UserProfile {
     @Column( name="phone_number", nullable=false, unique=true )
     private String phoneNumber;
     
-    @Column( name="registration_date", nullable=false )
-    private LocalDateTime registrationDate;
+    @OneToOne( mappedBy="userProfile" )
+    private Account account;
     
     public UserProfile() {}
 
-    public UserProfile(String firstName, String paternalLastName, String maternalLastName, String phoneNumber, LocalDateTime registrationDate) {
+    public UserProfile(String firstName, String paternalLastName, String maternalLastName, String phoneNumber, Account account) {
         this.firstName = firstName;
         this.paternalLastName = paternalLastName;
         this.maternalLastName = maternalLastName;
         this.phoneNumber = phoneNumber;
-        this.registrationDate = registrationDate;
+        this.account = account;
     }
 
-    public UserProfile(Integer id, String firstName, String paternalLastName, String maternalLastName, String phoneNumber, LocalDateTime registrationDate) {
+    public UserProfile(Integer id, String firstName, String paternalLastName, String maternalLastName, String phoneNumber, Account account) {
         this.id = id;
         this.firstName = firstName;
         this.paternalLastName = paternalLastName;
         this.maternalLastName = maternalLastName;
         this.phoneNumber = phoneNumber;
-        this.registrationDate = registrationDate;
+        this.account = account;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Integer getId() {
@@ -90,14 +99,6 @@ public class UserProfile {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
     }
     
 }

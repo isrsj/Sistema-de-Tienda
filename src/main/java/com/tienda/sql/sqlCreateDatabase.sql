@@ -19,7 +19,6 @@ create table UserProfile (
 	paternal_lastname varchar(20) not null,
 	maternal_lastname varchar(20) null,
 	phone_number varchar(25) not null unique,
-	registration_date datetime not null
 )
 
 create table AccountRole (
@@ -41,4 +40,3 @@ create table Account (
 	constraint FK_ACCOUNT_PROFILE foreign key (profile_id) references UserProfile(profile_id) on update cascade
 
 )
-
