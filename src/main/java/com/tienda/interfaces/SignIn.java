@@ -1,8 +1,15 @@
 
 package com.tienda.interfaces;
 
+import com.tienda.entities.Account;
+import com.tienda.entities.AccountRole;
+import com.tienda.entities.UserProfile;
+import com.tienda.session.Session;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -65,22 +72,69 @@ public class SignIn {
             String name = fieldName.getText();
             String paternalName = fieldPaternalName.getText();
             String maternalName = fieldMaternalName.getText();
-            String numberPhone = fieldNumberPhone.getText();
+            String phoneNumber = fieldNumberPhone.getText();
             String nickname = fieldNickname.getText();
             String password = fieldPassword.getText();
             String email = fieldEmail.getText();
             
-            if ( isValidForm( name, paternalName, maternalName, numberPhone, nickname, password, email) ) {
-                
+            if ( isValidForm( name, paternalName, maternalName, phoneNumber, nickname, password, email) ) {
+                managerLogin( name, paternalName, maternalName, phoneNumber, nickname, password, email);
             } else {
                 showMessage( "There are empty fields" );
             }
         };
     }
-    
-    private Boolean isValidForm (String name, String paternalName, String maternalName, String numberPhone, String nickname, String password, String email) {
+        
+    private Boolean isValidForm (String name, String paternalName, String maternalName, String phoneNumber, String nickname, String password, String email) {
         return !name.equals("") && !paternalName.equals("") && !maternalName.equals("") &&
-                !numberPhone.equals("") && !nickname.equals("") && !password.equals("") && !email.equals("") ;
+                !phoneNumber.equals("") && !nickname.equals("") && !password.equals("") && !email.equals("") ;
+    }
+    
+    private void managerLogin (String name, String paternalName, String maternalName, String phoneNumber, String nickname, String password, String email) {
+        Session.inSession(factory, entityManager -> {
+
+            UserProfile profile = createUserProfile(name, paternalName, maternalName, phoneNumber);
+            
+            AccountRole role = searchRole(entityManager);
+            
+            Account account = createAccount(nickname, email, password, profile, role);
+            
+            role.setSingleAccount(account);
+            profile.setAccount(account);
+            
+            entityManager.persist(account);
+            
+        });
+    }
+    
+    private UserProfile createUserProfile(String name, String paternalName, String maternalName, String phoneNumber ) {
+        UserProfile profile = new UserProfile();
+        profile.setFirstName(name);
+        profile.setPaternalLastName(paternalName);
+        profile.setMaternalLastName(maternalName);
+        profile.setPhoneNumber(phoneNumber);
+        return profile;
+    }
+    
+    private Account createAccount(String nickname, String email, String password, UserProfile profile, AccountRole role) {
+        Account account = new Account();
+        account.setNickname(nickname);
+        account.setEmail(email);
+        account.setPassword(password);
+        account.setUserProfile(profile);
+        account.setRole(role);
+        account.setRegistration(LocalDateTime.now());
+        return account;
+    }
+    
+    private AccountRole searchRole ( EntityManager entity ) {
+        String hql = "where name = 'Employee'";
+        try {
+            return entity.createQuery( hql, AccountRole.class ).getSingleResult();
+        } catch ( NoResultException e ) {
+            showMessage("That role was not found");
+            return null;
+        }
     }
     
     private void showMessage( String message ) {

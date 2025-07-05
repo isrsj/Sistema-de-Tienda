@@ -43,6 +43,10 @@ public class AccountRole {
     public void setAccount(Set<Account> account) {
         this.account = account;
     }
+    
+    public void setSingleAccount(Account account) {
+        this.account.add(account);
+    }
 
     public Integer getId() {
         return id;

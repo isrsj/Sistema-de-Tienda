@@ -18,7 +18,7 @@ create table UserProfile (
 	first_name varchar(40) not null,
 	paternal_lastname varchar(20) not null,
 	maternal_lastname varchar(20) null,
-	phone_number varchar(25) not null unique,
+	phone_number varchar(25) not null unique
 )
 
 create table AccountRole (
