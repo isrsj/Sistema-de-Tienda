@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table( name="Cuenta" )
-public class Cuenta {
+public class Account {
     
     @Id
     @GeneratedValue( strategy=GenerationType.IDENTITY )
@@ -25,15 +25,15 @@ public class Cuenta {
     private String password;
     
     
-    public Cuenta() {}
+    public Account() {}
 
-    public Cuenta(Integer id, String nickname, String password) {
+    public Account(Integer id, String nickname, String password) {
         this.id = id;
         this.nickname = nickname;
         this.password = password;
     }
 
-    public Cuenta(String nickname, String password) {
+    public Account(String nickname, String password) {
         this.nickname = nickname;
         this.password = password;
     }
