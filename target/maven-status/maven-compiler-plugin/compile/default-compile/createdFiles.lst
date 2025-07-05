@@ -1,6 +1,8 @@
 com\tienda\interfaces\Login.class
 com\tienda\interfaces\SignIn.class
-com\tienda\entities\Cuenta.class
+com\tienda\entities\Account.class
+com\tienda\entities\UserProfile.class
 com\tienda\interfaces\PanelLogin.class
 com\tienda\main\TiendaAbarrotes.class
 com\tienda\session\Session.class
+com\tienda\entities\AccountRole.class
