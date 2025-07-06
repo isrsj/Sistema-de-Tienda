@@ -12,8 +12,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido</h1>
+        <h1>STORE SYSTEM</h1>
         
+        <h2>LOGIN</h2>
+
+
+        <form action="LoginSv" method="POST">
+
+            <p>
+                <label>Nickname/Email</label> <input type="text" name="identifierField">
+            </p>
+
+            <p>
+                <label>Password</label> <input type="password" name="passwordField">
+            </p>
+
+            <p>
+                <button type="submit" >SignIn</button>
+            </p>
+
+        </form>
         
     </body>
 </html>
