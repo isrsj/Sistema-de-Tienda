@@ -1,5 +1,5 @@
 
-package com.tienda.interfaces;
+package com.tienda.backend;
 import jakarta.persistence.EntityManagerFactory;
 import java.awt.Color;
 import javax.swing.JPanel;

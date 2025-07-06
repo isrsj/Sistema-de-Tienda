@@ -1,5 +1,5 @@
 
-package com.tienda.interfaces;
+package com.tienda.backend;
 
 import com.tienda.entities.Account;
 import com.tienda.session.Session;
