@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<persistence version="3.0"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             >
+
+    <!-- La unidad de persistencia debe ser unica -->
+    <!-- JTA cuando el servidor se encarga de manejar las transacciones-->
+    <persistence-unit name="tienda_persistence_unit" transaction-type="RESOURCE_LOCAL">
+        
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        
+        <properties>
+            
+            <!-- Hibernate can update records into db -->
+            <!-- value -> update, validate, create and none -->
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            
+            <!-- H2 in-memory database -->
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            
+            <!-- H2 in-memory database -->
+            <!-- NO es seguro encrypt=false no usar en producción -->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:sqlserver://localhost:1433;databaseName=Tienda;encrypt=false"/>
+
+            <!-- Credentials -->
+            <property name="jakarta.persistence.jdbc.user"
+                      value="userapela"/>
+            <property name="jakarta.persistence.jdbc.password"
+                      value="userapela"/>
+
+            <!-- Agroal connection pool -->
+            <property name="hibernate.agroal.maxSize"
+                      value="20"/>
+
+            <!-- display SQL in console -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.highlight_sql" value="true"/>
+
+        </properties>
+
+    </persistence-unit>
+</persistence>
+
