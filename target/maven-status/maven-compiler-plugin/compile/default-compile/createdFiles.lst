@@ -1,5 +1,6 @@
 com\tienda\web\resources\JakartaEE8Resource.class
 com\tienda\interfaces\Login.class
+com\tienda\servlets\LoginSv.class
 com\tienda\interfaces\SignIn.class
 com\tienda\entities\Account.class
 com\tienda\entities\UserProfile.class
