@@ -21,7 +21,8 @@
             <!-- Hibernate can update records into db -->
             <!-- value -> update, validate, create and none -->
             <property name="hibernate.hbm2ddl.auto" value="none"/>
-            
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+
             <!-- H2 in-memory database -->
             <property name="jakarta.persistence.jdbc.driver"
                       value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
