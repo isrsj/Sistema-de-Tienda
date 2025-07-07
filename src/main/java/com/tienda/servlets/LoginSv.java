@@ -4,6 +4,8 @@
  */
 package com.tienda.servlets;
 
+import com.tienda.entities.Account;
+import com.tienda.persistence.controllers.PersistenceControllerFactory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,10 +56,18 @@ public class LoginSv extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        System.out.println("Nick: "+request.getParameter("identifierField"));
-        System.out.println("Pass: "+request.getParameter("passwordField"));
+        String identifier = request.getParameter("identifierField");
+        String password = request.getParameter("passwordField");
         
+        PersistenceControllerFactory controllerFactory = new PersistenceControllerFactory();
+        Account account = controllerFactory.getAccountController().findAccount(identifier);
         
+        if ( account != null ) {
+            
+            if ( account.getPassword().equals(password) ) {
+                response.sendRedirect("");
+            }
+        }
     }
 
     /**
