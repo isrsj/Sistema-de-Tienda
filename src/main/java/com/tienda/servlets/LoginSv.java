@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "LoginSv", urlPatterns = {"/LoginSv"})
 public class LoginSv extends HttpServlet {
-
+    
+    private PersistenceControllerFactory controllerFactory = PersistenceControllerFactory.getInstance();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -59,12 +61,14 @@ public class LoginSv extends HttpServlet {
         String identifier = request.getParameter("identifierField");
         String password = request.getParameter("passwordField");
         
-        Account account = PersistenceControllerFactory.getInstance().getAccountController().findAccount(identifier);
+        Account account = controllerFactory.getAccountController().findAccount(identifier);
         
         if ( account != null ) {
             
             if ( account.getPassword().equals(password) ) {
-                System.out.println("Hola");
+                System.out.println("Te haz logeado");
+            } else {
+                System.out.println("No te haz logeado");
             }
         }
     }
