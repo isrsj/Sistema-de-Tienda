@@ -9,22 +9,26 @@ import jakarta.persistence.NoResultException;
 
 public class AccountController implements Serializable {
     
-    private EntityManagerFactory emf = null;
+    private static AccountController instance = null;
     
-    public AccountController (EntityManagerFactory emf) {
-        this.emf = emf;
+    private EntityManager manager;
+    
+    private AccountController ( EntityManagerFactory managerFactory ) {
+        manager = managerFactory.createEntityManager();
     }
     
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+    public static AccountController getInstance ( EntityManagerFactory managerFactory ) {
+        if ( instance == null ) {
+            instance = new AccountController( managerFactory );
+        }
+        return instance;
     }
     
     public Account findAccount(String identifier) {
-        EntityManager em = getEntityManager();
         String hql = "where nickname=:paramNick";
         
         try {
-            Account account = em.createQuery(hql, Account.class)
+            Account account = manager.createQuery(hql, Account.class)
                 .setParameter("paramNick", identifier)
                 .getSingleResult();
             
