@@ -59,13 +59,12 @@ public class LoginSv extends HttpServlet {
         String identifier = request.getParameter("identifierField");
         String password = request.getParameter("passwordField");
         
-        PersistenceControllerFactory controllerFactory = new PersistenceControllerFactory();
-        Account account = controllerFactory.getAccountController().findAccount(identifier);
+        Account account = PersistenceControllerFactory.getInstance().getAccountController().findAccount(identifier);
         
         if ( account != null ) {
             
             if ( account.getPassword().equals(password) ) {
-                response.sendRedirect("");
+                System.out.println("Hola");
             }
         }
     }
