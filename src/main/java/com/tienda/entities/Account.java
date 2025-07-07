@@ -12,12 +12,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
 @Entity
 @Table( name="Account" )
-public class Account {
+public class Account implements Serializable {
     
     @Id
     @GeneratedValue( strategy=GenerationType.IDENTITY )

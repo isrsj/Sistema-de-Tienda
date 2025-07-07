@@ -8,11 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table( name="UserProfile" )
-public class UserProfile {
+public class UserProfile implements Serializable {
     
     @Id
     @GeneratedValue( strategy=GenerationType.IDENTITY )

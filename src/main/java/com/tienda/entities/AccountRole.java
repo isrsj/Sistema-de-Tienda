@@ -8,11 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table( name="AccountRole" )
-public class AccountRole {
+public class AccountRole implements Serializable {
     
     @Id
     @GeneratedValue( strategy=GenerationType.IDENTITY )
