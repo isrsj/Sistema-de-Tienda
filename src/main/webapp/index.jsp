@@ -9,29 +9,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="styles.css">
+        <title>Store System Login</title>
     </head>
     <body>
-        <h1>STORE SYSTEM</h1>
+        <div class="infoDiv">
+            <h1>STORE SYSTEM</h1>
+            <p>Welcome!!!</p>
+        </div>
         
-        <h2>LOGIN</h2>
+        <div class="login">
 
+            <h2><b>LOGIN</b></h2>
 
-        <form action="LoginSv" method="POST">
+            <form action="LoginSv" method="POST" class="loginForm">
 
-            <p>
-                <label>Nickname/Email</label> <input type="text" name="identifierField">
-            </p>
+                <p> <input type="text" name="identifierField" placeholder="nickname or email" class="field"> </p>
 
-            <p>
-                <label>Password</label> <input type="password" name="passwordField">
-            </p>
+                <p> <input type="password" name="passwordField" placeholder="password" class="field"> </p>
 
-            <p>
-                <button type="submit" >SignIn</button>
-            </p>
+                <p> <button type="submit" class="enterButton"><b>Enter</b></button> </p>
 
-        </form>
+            </form>
+
+        </div>
         
     </body>
 </html>
