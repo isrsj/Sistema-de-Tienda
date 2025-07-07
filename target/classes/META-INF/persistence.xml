@@ -20,7 +20,7 @@
             
             <!-- Hibernate can update records into db -->
             <!-- value -> update, validate, create and none -->
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
             
             <!-- H2 in-memory database -->
             <property name="jakarta.persistence.jdbc.driver"
@@ -37,14 +37,10 @@
             <property name="jakarta.persistence.jdbc.password"
                       value="userapela"/>
 
-            <!-- Agroal connection pool -->
-            <property name="hibernate.agroal.maxSize"
-                      value="20"/>
-
             <!-- display SQL in console -->
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.highlight_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.highlight_sql" value="false"/>
 
         </properties>
 

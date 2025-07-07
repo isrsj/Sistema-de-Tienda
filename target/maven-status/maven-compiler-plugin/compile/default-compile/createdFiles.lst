@@ -6,7 +6,6 @@ com\tienda\entities\Account.class
 com\tienda\entities\UserProfile.class
 com\tienda\session\Session.class
 com\tienda\web\JakartaRestConfiguration.class
-com\tienda\persistence\controllers\Controller.class
 com\tienda\web\resources\JakartaEE8Resource.class
 com\tienda\backend\PanelLogin.class
 com\tienda\persistence\controllers\exceptions\IllegalOrphanException.class
