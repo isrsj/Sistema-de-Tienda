@@ -8,20 +8,11 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.NoResultException;
 
 public class AccountController implements Serializable {
-    
-    private static AccountController instance = null;
-    
+        
     private EntityManager manager;
     
-    private AccountController ( EntityManagerFactory managerFactory ) {
+    public AccountController ( EntityManagerFactory managerFactory ) {
         manager = managerFactory.createEntityManager();
-    }
-    
-    public static AccountController getInstance ( EntityManagerFactory managerFactory ) {
-        if ( instance == null ) {
-            instance = new AccountController( managerFactory );
-        }
-        return instance;
     }
     
     public Account findAccount(String identifier) {

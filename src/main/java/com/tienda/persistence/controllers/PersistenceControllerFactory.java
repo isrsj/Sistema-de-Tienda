@@ -22,7 +22,7 @@ public class PersistenceControllerFactory {
     }
     
     public AccountController getAccountController() {
-        return AccountController.getInstance(managerFactory);
+        return new AccountController( managerFactory );
     }
     
     public AccountRoleController getAccountRoleController() {
