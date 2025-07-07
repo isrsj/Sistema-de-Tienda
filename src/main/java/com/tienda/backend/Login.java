@@ -78,24 +78,7 @@ public class Login {
     }
     
     private void validateAccount (EntityManager entityManager, String nick, String pass) {
-        String hql = "where nickname=:paramNick";
-        try {
-            Account account = entityManager.createQuery(hql, Account.class)
-                .setParameter("paramNick", nick)
-                .getSingleResult();
-            
-            if ( account.getPassword().equals(pass) ) {
-                panel.removeAll();
-                panel.revalidate();
-                // mover a la interfaz de admin
-                panel.repaint();
-            } else {
-                showMessage("The password is incorrect");
-            }
-            
-        } catch (NoResultException e) {
-            showMessage("The username/email was not found");
-        }
+        
     }
     
     private void showMessage( String message ) {
