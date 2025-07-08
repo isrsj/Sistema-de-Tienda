@@ -1,6 +1,6 @@
 
 
-.login {
+.loginDiv {
     border-style: none;
     border-radius: 20px;
     display: flex;
@@ -8,7 +8,23 @@
     justify-content: center;
     align-items: center;
     width: 200px;
-    height: 250px;
+    height: 350px;
+    margin: auto;
+    padding: 20px 20px 20px 30px;
+    background-color: #d8c5bb;
+    font-size: 17px;
+    color: #926f7d;
+}
+
+.createAccountDiv {
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 600px;
     margin: auto;
     padding: 20px 20px 20px 30px;
     background-color: #d8c5bb;
@@ -36,9 +52,25 @@
     text-align: center;
 }
 
+.createForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+    text-align: center;
+}
+
 .enterButton {
     border: none;
     width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #926f7d;
+    color: #d8c5bb;
+}
+
+.createButton {
+    border: none;
+    width: 150px;
     height: 30px;
     border-radius: 10px;
     background-color: #926f7d;
