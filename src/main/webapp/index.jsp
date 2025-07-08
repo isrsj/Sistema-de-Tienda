@@ -18,7 +18,7 @@
             <p>Welcome!!!</p>
         </div>
         
-        <div class="login">
+        <div class="loginDiv">
 
             <h2><b>LOGIN</b></h2>
 
@@ -28,9 +28,13 @@
 
                 <p> <input type="password" name="passwordField" placeholder="password" class="field"> </p>
 
-                <p> <button type="submit" class="enterButton"><b>Enter</b></button> </p>
+                <p> <button type="submit" class="enterButton"><b>Login</b></button> </p>
 
             </form>
+
+            <p>
+                <button type="submit" class="createButton" onclick="document.location='createAccount.jsp'"><b>Create Account</b></button>
+            </p>
 
         </div>
         
