@@ -1,4 +1,4 @@
-package com.tienda.persistence.controllers.exceptions;
+package com.store.persistence.controllers.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

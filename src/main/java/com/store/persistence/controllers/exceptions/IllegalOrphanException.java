@@ -1,4 +1,4 @@
-package com.tienda.persistence.controllers.exceptions;
+package com.store.persistence.controllers.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

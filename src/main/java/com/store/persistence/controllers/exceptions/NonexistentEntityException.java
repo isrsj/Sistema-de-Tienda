@@ -1,4 +1,4 @@
-package com.tienda.persistence.controllers.exceptions;
+package com.store.persistence.controllers.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {
