@@ -1,5 +1,5 @@
 
-package com.tienda.entities;
+package com.store.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -41,7 +41,7 @@ public class Account implements Serializable {
     @JoinColumn( name="profile_id", nullable=false )
     private UserProfile userProfile;
     
-    @ManyToOne( optional=false, fetch=FetchType.LAZY, cascade=CascadeType.ALL ) // FK
+    @ManyToOne( optional=false, fetch=FetchType.LAZY ) // FK
     @JoinColumn( name="role_id", nullable=false )
     private AccountRole role;
     
