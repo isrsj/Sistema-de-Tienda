@@ -1,11 +1,13 @@
 
-package com.tienda.persistence.controllers;
+package com.store.persistence.controllers;
 
-import com.tienda.entities.Account;
+import com.store.entities.Account;
+import com.store.session.Session;
 import java.io.Serializable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.NoResultException;
+import java.time.LocalDateTime;
 
 public class AccountController implements Serializable {
         
@@ -29,5 +31,15 @@ public class AccountController implements Serializable {
             return null;
         }
         
+    }
+    
+    public Account createAccountEntity(String nickname, String email, String password) {
+        return new Account(nickname, email, password, LocalDateTime.now(), null, null);
+    }
+    
+    public void persistAccount(Account account) {
+        Session.inSession(manager, entityManager -> {
+            manager.persist(account);
+        });
     }
 }
