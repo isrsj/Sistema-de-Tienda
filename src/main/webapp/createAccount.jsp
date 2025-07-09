@@ -21,9 +21,9 @@
 
         <div class="createAccountDiv">
 
-            <h2><b>Sign In</b></h2>
+            <h2><b>Account Info</b></h2>
 
-            <form class="createForm">
+            <form action="CreateAccountServlet" method="POST" class="createForm">
 
                 <p> <input type="text" name="nameField" placeholder="Your Name" class="field"> </p>
 
