@@ -18,18 +18,18 @@
     </properties>   
     
     <dependencies>
+        
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Dependencia para el driver de sql server  -->
+        <!-- Dependencia para el driver PostgreSQL -->
         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>12.10.0.jre11</version>
-            <scope>compile</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
         </dependency>
         
         <!-- Dependencia para el ORM Hibernate -->
@@ -38,7 +38,10 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.6.13.Final</version>
         </dependency>
+        
     </dependencies>
+    
+    
     
     <build>
         <plugins>
