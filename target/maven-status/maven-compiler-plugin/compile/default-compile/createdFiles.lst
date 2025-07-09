@@ -1,16 +1,14 @@
 com\tienda\persistence\controllers\AccountRoleController.class
 com\tienda\servlets\LoginSv.class
-com\tienda\backend\SignIn.class
 com\tienda\persistence\controllers\AccountController.class
 com\tienda\entities\Account.class
 com\tienda\entities\UserProfile.class
 com\tienda\servlets\StartupServlet.class
+com\tienda\servlets\CreateAccountServlet.class
 com\tienda\session\Session.class
 com\tienda\web\JakartaRestConfiguration.class
 com\tienda\web\resources\JakartaEE8Resource.class
-com\tienda\backend\PanelLogin.class
 com\tienda\persistence\controllers\exceptions\IllegalOrphanException.class
-com\tienda\backend\Login.class
 com\tienda\persistence\controllers\UserProfileController.class
 com\tienda\persistence\controllers\exceptions\NonexistentEntityException.class
 com\tienda\persistence\controllers\exceptions\PreexistingEntityException.class
