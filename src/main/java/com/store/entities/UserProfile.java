@@ -1,5 +1,5 @@
 
-package com.tienda.entities;
+package com.store.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
