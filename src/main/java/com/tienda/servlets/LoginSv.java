@@ -36,7 +36,7 @@ public class LoginSv extends HttpServlet {
         
         Account account = PersistenceControllerFactory.getInstance()
                             .getAccountController().findAccount(identifier);
-        
+                        
         if ( account != null ) {
             
             if ( account.getPassword().equals(password) ) {
