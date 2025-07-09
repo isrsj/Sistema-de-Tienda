@@ -1,4 +1,4 @@
-package com.tienda.web;
+package com.store.web;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

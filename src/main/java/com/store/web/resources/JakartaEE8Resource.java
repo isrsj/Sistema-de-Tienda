@@ -1,4 +1,4 @@
-package com.tienda.web.resources;
+package com.store.web.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
