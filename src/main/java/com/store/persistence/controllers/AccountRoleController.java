@@ -1,9 +1,11 @@
 
-package com.tienda.persistence.controllers;
+package com.store.persistence.controllers;
 
+import com.store.entities.AccountRole;
 import java.io.Serializable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import java.util.HashSet;
 
 public class AccountRoleController implements Serializable {
 
@@ -16,6 +18,8 @@ public class AccountRoleController implements Serializable {
         return emf.createEntityManager();
     }
     
-    
+    public AccountRole createAccountRoleEntity(Integer id, String name) {
+        return new AccountRole(id, name, new HashSet<>());
+    }
     
 }
