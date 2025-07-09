@@ -1,5 +1,5 @@
 
-package com.tienda.persistence.controllers;
+package com.store.persistence.controllers;
 
 import jakarta.persistence.EntityManagerFactory;
 import static jakarta.persistence.Persistence.createEntityManagerFactory;
