@@ -1,10 +1,8 @@
 
-package com.tienda.session;
+package com.store.session;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
-import static jakarta.persistence.Persistence.createEntityManagerFactory;
 import java.util.function.Consumer;
 
 /**
@@ -13,12 +11,7 @@ import java.util.function.Consumer;
  */
 public class Session {
     
-    public static EntityManagerFactory init( String persistenceUnit ) {
-        return createEntityManagerFactory(persistenceUnit);
-    }
-    
-    public static void inSession ( EntityManagerFactory factory, Consumer<EntityManager> work ) {
-        EntityManager manager = factory.createEntityManager();
+    public static void inSession ( EntityManager manager, Consumer<EntityManager> work ) {
         EntityTransaction transaction = manager.getTransaction();
         
         try {
