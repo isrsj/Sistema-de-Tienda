@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.tienda.servlets;
+package com.store.servlets;
 
-import com.tienda.persistence.controllers.PersistenceControllerFactory;
+import com.store.persistence.controllers.PersistenceControllerFactory;
 import jakarta.persistence.EntityManagerFactory;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
