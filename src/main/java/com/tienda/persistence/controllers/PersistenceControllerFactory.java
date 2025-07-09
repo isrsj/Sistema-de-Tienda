@@ -11,7 +11,7 @@ public class PersistenceControllerFactory {
     private EntityManagerFactory managerFactory = null;
     
     private PersistenceControllerFactory () {
-        managerFactory = createEntityManagerFactory("tienda_persistence_unit");
+        managerFactory = createEntityManagerFactory("store_unit");
     }
     
     public static PersistenceControllerFactory getInstance() {
@@ -19,6 +19,10 @@ public class PersistenceControllerFactory {
             instance = new PersistenceControllerFactory();
         }
         return instance;
+    }
+
+    public EntityManagerFactory getManagerFactory() {
+        return managerFactory;
     }
     
     public AccountController getAccountController() {
